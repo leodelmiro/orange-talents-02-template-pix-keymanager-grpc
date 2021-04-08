@@ -33,7 +33,7 @@ class RegistroGrpcEndpoint(private val registraChaveService: RegistraChaveServic
             responseObserver.onCompleted()
         } catch (e: Exception) {
             when (e) {
-                is PixJaExistenteException -> responseObserver?.errorResponse(Status.INVALID_ARGUMENT, ErrorMessage(e.message))
+                is PixJaExistenteException -> responseObserver?.errorResponse(Status.ALREADY_EXISTS, ErrorMessage(e.message))
                 is java.lang.IllegalStateException -> responseObserver?.errorResponse(Status.INVALID_ARGUMENT, ErrorMessage(e.message))
                 else -> responseObserver?.errorResponse(Status.INTERNAL, ErrorMessage(e.message))
             }

@@ -6,7 +6,7 @@ import br.com.leodelmiro.RegistroChaveResponse
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
 import br.com.leodelmiro.compartilhado.validacao.errorResponse
 import br.com.leodelmiro.registro.exceptions.PixJaExistenteException
-import br.com.leodelmiro.registro.validacao.validaRequest
+import br.com.leodelmiro.registro.validacao.valida
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
@@ -16,7 +16,7 @@ class RegistroGrpcEndpoint(private val registraChaveService: RegistraChaveServic
 
     override fun registrarChave(request: RegistroChaveRequest?, responseObserver: StreamObserver<RegistroChaveResponse>?) {
 
-        val possibleValidationError = validaRequest(request)
+        val possibleValidationError = request.valida()
         possibleValidationError?.let {
             responseObserver?.errorResponse(Status.INVALID_ARGUMENT, it)
             return
@@ -31,12 +31,10 @@ class RegistroGrpcEndpoint(private val registraChaveService: RegistraChaveServic
                             .setChavePix(chavePix.chave)
                             .build())
             responseObserver.onCompleted()
-        } catch (e: Exception) {
-            when (e) {
-                is PixJaExistenteException -> responseObserver?.errorResponse(Status.ALREADY_EXISTS, ErrorMessage(e.message))
-                is java.lang.IllegalStateException -> responseObserver?.errorResponse(Status.INVALID_ARGUMENT, ErrorMessage(e.message))
-                else -> responseObserver?.errorResponse(Status.INTERNAL, ErrorMessage(e.message))
-            }
+        } catch (e: PixJaExistenteException) {
+            responseObserver?.errorResponse(Status.ALREADY_EXISTS, ErrorMessage(e.message))
+        } catch (e: IllegalStateException) {
+            responseObserver?.errorResponse(Status.NOT_FOUND, ErrorMessage(e.message))
         }
     }
 }

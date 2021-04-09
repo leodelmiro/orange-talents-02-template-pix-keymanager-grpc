@@ -67,7 +67,7 @@ enum class TipoChave {
         override fun valida(chave: String?): ErrorMessage? {
             if (!chave.isNullOrBlank()) {
                 return ErrorMessage(
-                        description = "Chave aleatório não deve ter chave preenchida",
+                        description = "Chave aleatória não deve ter chave preenchida",
                         augmentDescription = "Tente novamente sem preencher a chave")
             }
             return null

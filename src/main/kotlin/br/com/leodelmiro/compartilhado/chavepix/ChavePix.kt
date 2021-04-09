@@ -1,4 +1,4 @@
-package br.com.leodelmiro.registro
+package br.com.leodelmiro.compartilhado.chavepix
 
 import java.time.LocalDateTime
 import java.util.*

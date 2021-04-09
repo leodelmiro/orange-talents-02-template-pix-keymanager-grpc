@@ -1,6 +1,6 @@
 package br.com.leodelmiro.registro
 
-import br.com.leodelmiro.KeyManagerGrpcServiceGrpc
+import br.com.leodelmiro.KeyManagerRegistraGrpcServiceGrpc
 import br.com.leodelmiro.RegistroChaveRequest
 import br.com.leodelmiro.RegistroChaveResponse
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
@@ -12,7 +12,7 @@ import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
 
 @Singleton
-class RegistroGrpcEndpoint(private val registraChaveService: RegistraChaveService) : KeyManagerGrpcServiceGrpc.KeyManagerGrpcServiceImplBase() {
+class RegistroGrpcEndpoint(private val registraChaveService: RegistraChaveService) : KeyManagerRegistraGrpcServiceGrpc.KeyManagerRegistraGrpcServiceImplBase() {
 
     override fun registrarChave(request: RegistroChaveRequest?, responseObserver: StreamObserver<RegistroChaveResponse>?) {
 

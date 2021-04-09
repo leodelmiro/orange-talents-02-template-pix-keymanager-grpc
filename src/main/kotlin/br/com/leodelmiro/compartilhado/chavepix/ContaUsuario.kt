@@ -1,4 +1,4 @@
-package br.com.leodelmiro.registro
+package br.com.leodelmiro.compartilhado.chavepix
 
 import javax.persistence.Column
 import javax.persistence.Embeddable

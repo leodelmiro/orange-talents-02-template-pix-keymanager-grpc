@@ -1,5 +1,9 @@
 package br.com.leodelmiro.registro
 
+import br.com.leodelmiro.compartilhado.chavepix.ChavePix
+import br.com.leodelmiro.compartilhado.chavepix.ContaUsuario
+import br.com.leodelmiro.compartilhado.chavepix.TipoChave
+import br.com.leodelmiro.compartilhado.chavepix.TipoConta
 import io.micronaut.core.annotation.Introspected
 import org.hibernate.validator.constraints.Length
 import java.util.*

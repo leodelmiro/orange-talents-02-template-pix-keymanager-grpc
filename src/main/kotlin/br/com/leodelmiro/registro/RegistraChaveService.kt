@@ -1,6 +1,11 @@
 package br.com.leodelmiro.registro
 
 import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.compartilhado.apis.ErpClient
+import br.com.leodelmiro.compartilhado.chavepix.ChavePix
+import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
+import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoChave
+import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoConta
 import br.com.leodelmiro.registro.exceptions.PixJaExistenteException
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton

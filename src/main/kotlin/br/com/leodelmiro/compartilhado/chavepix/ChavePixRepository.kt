@@ -1,4 +1,4 @@
-package br.com.leodelmiro.registro
+package br.com.leodelmiro.compartilhado.chavepix
 
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.jpa.repository.JpaRepository

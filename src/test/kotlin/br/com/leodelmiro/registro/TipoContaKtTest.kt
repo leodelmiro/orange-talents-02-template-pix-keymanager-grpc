@@ -1,9 +1,9 @@
 package br.com.leodelmiro.registro
 
 import br.com.leodelmiro.RegistroChaveRequest
-import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
+import br.com.leodelmiro.compartilhado.chavepix.TipoConta
+import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoConta
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 

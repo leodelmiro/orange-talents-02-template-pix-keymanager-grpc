@@ -1,7 +1,9 @@
 package br.com.leodelmiro.registro
 
-import br.com.leodelmiro.KeyManagerGrpcServiceGrpc
+import br.com.leodelmiro.KeyManagerRegistraGrpcServiceGrpc
 import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.compartilhado.apis.ErpClient
+import br.com.leodelmiro.compartilhado.chavepix.*
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
@@ -24,7 +26,7 @@ import javax.inject.Inject
 
 @MicronautTest(transactional = false)
 internal class RegistroGrpcEndpointTest(val repository: ChavePixRepository,
-                                        val grpcClient: KeyManagerGrpcServiceGrpc.KeyManagerGrpcServiceBlockingStub
+                                        val grpcClient: KeyManagerRegistraGrpcServiceGrpc.KeyManagerRegistraGrpcServiceBlockingStub
 ) {
 
     @Inject
@@ -155,8 +157,8 @@ internal class RegistroGrpcEndpointTest(val repository: ChavePixRepository,
     @Factory
     class GrpcClient {
         @Bean
-        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): KeyManagerGrpcServiceGrpc.KeyManagerGrpcServiceBlockingStub? {
-            return KeyManagerGrpcServiceGrpc.newBlockingStub(channel)
+        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): KeyManagerRegistraGrpcServiceGrpc.KeyManagerRegistraGrpcServiceBlockingStub {
+            return KeyManagerRegistraGrpcServiceGrpc.newBlockingStub(channel)
         }
     }
 }

@@ -1,9 +1,10 @@
 package br.com.leodelmiro.registro
 
-import org.junit.jupiter.api.Assertions
+import br.com.leodelmiro.compartilhado.chavepix.ContaUsuario
+import br.com.leodelmiro.compartilhado.chavepix.TipoChave
+import br.com.leodelmiro.compartilhado.chavepix.TipoConta
+import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import java.util.*
 
 internal class NovaChavePixTest {

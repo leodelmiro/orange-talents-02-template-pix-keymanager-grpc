@@ -1,5 +1,6 @@
 package br.com.leodelmiro.registro
 
+import br.com.leodelmiro.compartilhado.chavepix.ContaUsuario
 import javax.validation.constraints.NotBlank
 
 data class ContaUsuarioResponse(

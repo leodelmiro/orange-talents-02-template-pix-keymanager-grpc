@@ -1,5 +1,6 @@
 package br.com.leodelmiro.registro
 
+import br.com.leodelmiro.compartilhado.chavepix.TipoChave
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue

@@ -1,11 +1,11 @@
 package br.com.leodelmiro.registro.validacao
 
 import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.compartilhado.chavepix.TipoChave
+import br.com.leodelmiro.compartilhado.chavepix.TipoConta
+import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoChave
+import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoConta
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
-import br.com.leodelmiro.registro.TipoChave
-import br.com.leodelmiro.registro.TipoConta
-import br.com.leodelmiro.registro.requestParaTipoChave
-import br.com.leodelmiro.registro.requestParaTipoConta
 
 fun RegistroChaveRequest?.valida(): ErrorMessage? {
     var possibleErrorMessage = validaIdCliente(this?.idCliente)

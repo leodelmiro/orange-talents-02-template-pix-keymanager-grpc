@@ -11,6 +11,10 @@ service KeyManagerRegistraGrpcService {
   rpc registrarChave (RegistroChaveRequest) returns (RegistroChaveResponse) {}
 }
 
+service KeyManagerRemoveGrpcService {
+  rpc removerChave(RemocaoChaveRequest) returns (RemocaoChaveResponse) {}
+}
+
 message RegistroChaveRequest {
   string idCliente = 1;
   enum TipoChave {
@@ -33,4 +37,14 @@ message RegistroChaveRequest {
 message RegistroChaveResponse {
   string idPix = 1;
   string chavePix = 2;
+}
+
+message RemocaoChaveRequest {
+  string idPix = 1;
+  string idCliente = 2;
+}
+
+message RemocaoChaveResponse {
+  string idPix = 1;
+  string idCliente = 2;
 }

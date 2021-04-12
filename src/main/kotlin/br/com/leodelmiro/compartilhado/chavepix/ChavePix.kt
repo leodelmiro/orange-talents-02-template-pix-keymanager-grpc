@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull
 @Entity
 @Table(name = "tb_chaves")
 class ChavePix(
-        @field:NotBlank @Column(nullable = false) val idCliente: String,
+        @field:NotBlank @Column(nullable = false) val idCliente: UUID,
         @field:NotNull @Enumerated(EnumType.STRING) @Column(nullable = false) val tipoConta: TipoConta,
         @field:NotBlank @Column(unique = true, nullable = false, length = 77) val chave: String,
         @field:NotNull @Enumerated(EnumType.STRING) @Column(nullable = false) val tipoChave: TipoChave,

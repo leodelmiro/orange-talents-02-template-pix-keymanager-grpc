@@ -136,7 +136,7 @@ internal class RegistroGrpcEndpointTest(val repository: ChavePixRepository,
     }
 
     private fun chavePixModel(chave: String): ChavePix {
-        return ChavePix(CLIENTE_ID.toString(),
+        return ChavePix(CLIENTE_ID,
                 TipoConta.CONTA_CORRENTE,
                 chave,
                 TipoChave.CPF,

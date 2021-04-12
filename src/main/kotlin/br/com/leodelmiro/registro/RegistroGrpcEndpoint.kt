@@ -3,9 +3,7 @@ package br.com.leodelmiro.registro
 import br.com.leodelmiro.KeyManagerRegistraGrpcServiceGrpc
 import br.com.leodelmiro.RegistroChaveRequest
 import br.com.leodelmiro.RegistroChaveResponse
-import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
 import br.com.leodelmiro.compartilhado.validacao.errorResponse
-import br.com.leodelmiro.registro.exceptions.PixJaExistenteException
 import br.com.leodelmiro.registro.validacao.valida
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
@@ -16,25 +14,20 @@ class RegistroGrpcEndpoint(private val registraChaveService: RegistraChaveServic
 
     override fun registrarChave(request: RegistroChaveRequest?, responseObserver: StreamObserver<RegistroChaveResponse>?) {
 
-        val possibleValidationError = request.valida()
-        possibleValidationError?.let {
+        val possivelErroValidacao = request.valida()
+        possivelErroValidacao?.let {
             responseObserver?.errorResponse(Status.INVALID_ARGUMENT, it)
             return
         }
 
-        try {
-            val chavePix = registraChaveService.registra(request)
+        val chavePix = registraChaveService.registra(request)
 
-            responseObserver!!.onNext(
-                    RegistroChaveResponse.newBuilder()
-                            .setIdPix(chavePix.id.toString())
-                            .setChavePix(chavePix.chave)
-                            .build())
-            responseObserver.onCompleted()
-        } catch (e: PixJaExistenteException) {
-            responseObserver?.errorResponse(Status.ALREADY_EXISTS, ErrorMessage(e.message))
-        } catch (e: IllegalStateException) {
-            responseObserver?.errorResponse(Status.NOT_FOUND, ErrorMessage(e.message))
-        }
+        responseObserver!!.onNext(
+                RegistroChaveResponse.newBuilder()
+                        .setIdPix(chavePix.id.toString())
+                        .setChavePix(chavePix.chave)
+                        .build())
+        responseObserver.onCompleted()
+
     }
 }

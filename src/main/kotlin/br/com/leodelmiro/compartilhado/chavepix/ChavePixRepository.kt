@@ -8,4 +8,6 @@ import java.util.*
 interface ChavePixRepository: JpaRepository<ChavePix, UUID> {
 
     fun existsByChave(chave: String): Boolean
+
+    fun findByIdAndIdCliente(id: UUID, idCliente: UUID): ChavePix?
 }

@@ -24,6 +24,6 @@ class NovaChavePix(
     }
 
     fun toModel(): ChavePix {
-        return ChavePix(idCliente, tipoConta, chave, tipoChave, conta)
+        return ChavePix(UUID.fromString(idCliente), tipoConta, chave, tipoChave, conta)
     }
 }

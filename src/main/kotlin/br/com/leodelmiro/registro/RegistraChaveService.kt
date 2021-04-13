@@ -38,9 +38,8 @@ class RegistraChaveService(@Inject private val bcbClient: BcbClient,
         logger.info("Registrando chave no banco central")
         try {
             val bcbResponse = bcbClient.cadastraChave(chavePix.toRequest())?.body()
-                    ?: throw IllegalStateException("Erro ao realizar registro da chave pix no Banco Central")
 
-            chavePix.atualizaChave(bcbResponse.key!!)
+            chavePix.atualizaChave(bcbResponse!!.key!!)
 
             logger.info("Chave: ${chavePix.chave} salva no banco e registrada no Banco central")
 

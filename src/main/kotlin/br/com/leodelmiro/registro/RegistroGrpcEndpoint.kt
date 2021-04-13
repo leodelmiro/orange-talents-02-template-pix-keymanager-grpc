@@ -6,6 +6,7 @@ import br.com.leodelmiro.RegistroChaveResponse
 import br.com.leodelmiro.compartilhado.validacao.errorResponse
 import br.com.leodelmiro.registro.validacao.valida
 import io.grpc.Status
+import io.grpc.StatusRuntimeException
 import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
 

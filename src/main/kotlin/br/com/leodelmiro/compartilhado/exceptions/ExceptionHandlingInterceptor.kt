@@ -5,6 +5,7 @@ import br.com.leodelmiro.registro.exceptions.PixJaExistenteException
 import br.com.leodelmiro.remocao.exceptions.ChaveInexistenteException
 import io.grpc.*
 import org.slf4j.LoggerFactory
+import java.lang.IllegalStateException
 import javax.inject.Singleton
 
 @Singleton
@@ -25,6 +26,7 @@ class ExceptionHandlingInterceptor : ServerInterceptor {
                 is ChaveInexistenteException -> Status.NOT_FOUND
                 is ClienteNaoEncontradoException -> Status.NOT_FOUND
                 is PixJaExistenteException -> Status.ALREADY_EXISTS
+                is IllegalStateException -> Status.INTERNAL
                 else -> Status.UNKNOWN
             }
 

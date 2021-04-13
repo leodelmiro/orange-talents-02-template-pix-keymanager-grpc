@@ -84,14 +84,16 @@ enum class TipoChave {
     };
 
     abstract fun valida(chave: String?): ErrorMessage?
-}
 
-fun requestParaTipoChave(message: RegistroChaveRequest.TipoChave?): TipoChave {
-    return when (message) {
-        RegistroChaveRequest.TipoChave.CPF -> TipoChave.CPF
-        RegistroChaveRequest.TipoChave.CELULAR -> TipoChave.CELULAR
-        RegistroChaveRequest.TipoChave.EMAIL -> TipoChave.EMAIL
-        RegistroChaveRequest.TipoChave.ALEATORIA -> TipoChave.ALEATORIA
-        else -> TipoChave.INVALIDA
+    companion object {
+        fun by(message: RegistroChaveRequest.TipoChave?): TipoChave {
+            return when (message) {
+                RegistroChaveRequest.TipoChave.CPF -> CPF
+                RegistroChaveRequest.TipoChave.CELULAR -> CELULAR
+                RegistroChaveRequest.TipoChave.EMAIL -> EMAIL
+                RegistroChaveRequest.TipoChave.ALEATORIA -> ALEATORIA
+                else -> INVALIDA
+            }
+        }
     }
 }

@@ -3,8 +3,6 @@ package br.com.leodelmiro.registro.validacao
 import br.com.leodelmiro.RegistroChaveRequest
 import br.com.leodelmiro.compartilhado.chavepix.TipoChave
 import br.com.leodelmiro.compartilhado.chavepix.TipoConta
-import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoChave
-import br.com.leodelmiro.compartilhado.chavepix.requestParaTipoConta
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
 
 fun RegistroChaveRequest?.valida(): ErrorMessage? {
@@ -18,7 +16,7 @@ fun RegistroChaveRequest?.valida(): ErrorMessage? {
         return it
     }
 
-    possibleErrorMessage = requestParaTipoChave(this?.tipoChave).valida(this?.chave)
+    possibleErrorMessage = TipoChave.by(this?.tipoChave).valida(this?.chave)
     possibleErrorMessage?.let {
         return it
     }
@@ -47,7 +45,7 @@ fun validaTipoConta(requestTipoConta: RegistroChaveRequest.TipoConta?): ErrorMes
         return ErrorMessage(description = "Tipo de conta é obrigatório")
     }
 
-    if (requestParaTipoConta(requestTipoConta) == TipoConta.INVALIDA) {
+    if (TipoConta.by(requestTipoConta) == TipoConta.INVALIDA) {
         return ErrorMessage(description = "Tipo de conta deve ser válida")
     }
 
@@ -59,7 +57,7 @@ fun validaTipoChave(requestTipoChave: RegistroChaveRequest.TipoChave?): ErrorMes
         return ErrorMessage(description = "Tipo de chave é obrigatório")
     }
 
-    if (requestParaTipoChave(requestTipoChave) == TipoChave.INVALIDA) {
+    if (TipoChave.by(requestTipoChave) == TipoChave.INVALIDA) {
         return ErrorMessage(description = "Tipo de chave deve ser válida")
     }
 

@@ -1,6 +1,6 @@
 package br.com.leodelmiro.compartilhado.chavepix
 
-import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.TipoChave as TipoChaveProto
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
 import io.micronaut.validation.validator.constraints.EmailValidator
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator
@@ -86,12 +86,12 @@ enum class TipoChave {
     abstract fun valida(chave: String?): ErrorMessage?
 
     companion object {
-        fun by(message: RegistroChaveRequest.TipoChave?): TipoChave {
+        fun by(message: TipoChaveProto?): TipoChave {
             return when (message) {
-                RegistroChaveRequest.TipoChave.CPF -> CPF
-                RegistroChaveRequest.TipoChave.CELULAR -> CELULAR
-                RegistroChaveRequest.TipoChave.EMAIL -> EMAIL
-                RegistroChaveRequest.TipoChave.ALEATORIA -> ALEATORIA
+                TipoChaveProto.CPF -> CPF
+                TipoChaveProto.CELULAR -> CELULAR
+                TipoChaveProto.EMAIL -> EMAIL
+                TipoChaveProto.ALEATORIA -> ALEATORIA
                 else -> INVALIDA
             }
         }

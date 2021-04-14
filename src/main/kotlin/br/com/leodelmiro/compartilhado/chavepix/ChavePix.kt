@@ -1,6 +1,7 @@
 package br.com.leodelmiro.compartilhado.chavepix
 
 import br.com.leodelmiro.compartilhado.apis.CreatePixKeyResponse
+import br.com.leodelmiro.consulta.DetalhesChavePix
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*

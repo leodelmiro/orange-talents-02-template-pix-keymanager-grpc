@@ -2,6 +2,8 @@ package br.com.leodelmiro.registro
 
 import br.com.leodelmiro.KeyManagerRegistraGrpcServiceGrpc
 import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.TipoChave as TipoChaveProto
+import br.com.leodelmiro.TipoConta as TipoContaProto
 import br.com.leodelmiro.compartilhado.apis.*
 import br.com.leodelmiro.compartilhado.apis.CreatePixKeyRequest.Companion.toRequest
 import br.com.leodelmiro.compartilhado.chavepix.*
@@ -58,9 +60,9 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
 
         val result = grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                 .setIdCliente(CLIENTE_ID.toString())
-                .setTipoChave(RegistroChaveRequest.TipoChave.CPF)
+                .setTipoChave(TipoChaveProto.CPF)
                 .setChave(chavePixCpf)
-                .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                 .build()
         )
 
@@ -85,8 +87,8 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
 
         val result = grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                 .setIdCliente(CLIENTE_ID.toString())
-                .setTipoChave(RegistroChaveRequest.TipoChave.ALEATORIA)
-                .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                .setTipoChave(TipoChaveProto.ALEATORIA)
+                .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                 .build()
         )
 
@@ -107,9 +109,9 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                     .setIdCliente(CLIENTE_ID.toString())
-                    .setTipoChave(RegistroChaveRequest.TipoChave.CPF)
+                    .setTipoChave(TipoChaveProto.CPF)
                     .setChave(chavePixCpf)
-                    .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                    .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                     .build()
             )
         }
@@ -133,9 +135,9 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                     .setIdCliente(CLIENTE_ID.toString())
-                    .setTipoChave(RegistroChaveRequest.TipoChave.CPF)
+                    .setTipoChave(TipoChaveProto.CPF)
                     .setChave(chave)
-                    .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                    .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                     .build()
             )
         }
@@ -155,9 +157,9 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                     .setIdCliente(CLIENTE_ID.toString())
-                    .setTipoChave(RegistroChaveRequest.TipoChave.CPF)
+                    .setTipoChave(TipoChaveProto.CPF)
                     .setChave(chave)
-                    .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                    .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                     .build()
             )
         }
@@ -181,9 +183,9 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                     .setIdCliente(CLIENTE_ID.toString())
-                    .setTipoChave(RegistroChaveRequest.TipoChave.CPF)
+                    .setTipoChave(TipoChaveProto.CPF)
                     .setChave(chave)
-                    .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                    .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                     .build()
             )
         }
@@ -202,9 +204,9 @@ internal class RegistroGrpcEndpointTest(private val repository: ChavePixReposito
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.registrarChave(RegistroChaveRequest.newBuilder()
                     .setIdCliente(CLIENTE_ID.toString())
-                    .setTipoChave(RegistroChaveRequest.TipoChave.CPF)
+                    .setTipoChave(TipoChaveProto.CPF)
                     .setChave("96498610093")
-                    .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_CORRENTE)
+                    .setTipoConta(TipoContaProto.CONTA_CORRENTE)
                     .build()
             )
         }

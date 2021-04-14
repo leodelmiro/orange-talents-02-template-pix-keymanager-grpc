@@ -5,6 +5,8 @@ option java_package = "br.com.leodelmiro";
 option java_outer_classname = "KeyManagerGrpc";
 option objc_class_prefix = "HLW";
 
+import "google/protobuf/timestamp.proto";
+
 package br.com.leodelmiro;
 
 service KeyManagerRegistraGrpcService {
@@ -15,22 +17,14 @@ service KeyManagerRemoveGrpcService {
   rpc removerChave(RemocaoChaveRequest) returns (RemocaoChaveResponse) {}
 }
 
+service KeyManagerConsultaGrpcService {
+  rpc consultaChave(ConsultaChaveRequest) returns (ConsultaChaveResponse) {}
+}
+
 message RegistroChaveRequest {
   string idCliente = 1;
-  enum TipoChave {
-    CHAVE_DESCONHECIDA = 0;
-    CPF = 1;
-    CELULAR = 2;
-    EMAIL = 3;
-    ALEATORIA = 4;
-  }
   TipoChave tipoChave = 2;
   string chave = 3;
-  enum TipoConta {
-    CONTA_DESCONHECIDA = 0;
-    CONTA_CORRENTE = 1;
-    CONTA_POUPANCA = 2;
-  }
   TipoConta tipoConta = 4;
 }
 
@@ -47,4 +41,54 @@ message RemocaoChaveRequest {
 message RemocaoChaveResponse {
   string idPix = 1;
   string idCliente = 2;
+}
+
+message ConsultaChaveRequest {
+  message ConsultaPorPixEClienteId {
+    string idPix = 1;
+    string idCliente = 2;
+  }
+
+  oneof filtro {
+      ConsultaPorPixEClienteId pixEClienteId = 1;
+      string chavePix = 2;
+  }
+}
+
+message ConsultaChaveResponse {
+
+  message ChavePixInfo {
+
+    message Conta {
+      string instituicao = 1;
+      string nomeTitular = 2;
+      string cpfTitular = 3;
+      TipoConta tipoConta = 4;
+      string agencia = 5;
+      string numero = 6;
+    }
+
+    TipoChave tipoChave = 1;
+    string chavePix = 2;
+    Conta conta = 3;
+    google.protobuf.Timestamp criadoEm = 4;
+  }
+
+  string idPix = 1;
+  string idClient = 2;
+  ChavePixInfo chave = 3;
+}
+
+enum TipoChave {
+  CHAVE_DESCONHECIDA = 0;
+  CPF = 1;
+  CELULAR = 2;
+  EMAIL = 3;
+  ALEATORIA = 4;
+}
+
+enum TipoConta {
+  CONTA_DESCONHECIDA = 0;
+  CONTA_CORRENTE = 1;
+  CONTA_POUPANCA = 2;
 }

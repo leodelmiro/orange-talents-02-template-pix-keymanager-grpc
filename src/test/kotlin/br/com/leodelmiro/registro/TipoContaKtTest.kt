@@ -1,6 +1,6 @@
 package br.com.leodelmiro.registro
 
-import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.TipoConta as TipoContaProto
 import br.com.leodelmiro.compartilhado.chavepix.TipoConta
 import br.com.leodelmiro.compartilhado.chavepix.TipoConta.Companion.by
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -16,7 +16,7 @@ internal class TipoContaKtTest {
             "CONTA_DESCONHECIDA, INVALIDA"
     )
     fun `TipoConta by deve transformar TipoConta request para TipoConta model`(requestString: String, tipoContaEsperado: String) {
-        val tipoContaRequest = RegistroChaveRequest.TipoConta.valueOf(requestString)
+        val tipoContaRequest = TipoContaProto.valueOf(requestString)
         val resultadoEsperado = TipoConta.valueOf(tipoContaEsperado)
 
         val result = by(tipoContaRequest)

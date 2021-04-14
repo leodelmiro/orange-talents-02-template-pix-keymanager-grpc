@@ -7,6 +7,7 @@ import io.grpc.*
 import org.slf4j.LoggerFactory
 import java.lang.IllegalStateException
 import javax.inject.Singleton
+import javax.validation.ConstraintViolationException
 
 @Singleton
 class ExceptionHandlingInterceptor : ServerInterceptor {
@@ -27,6 +28,7 @@ class ExceptionHandlingInterceptor : ServerInterceptor {
                 is ClienteNaoEncontradoException -> Status.NOT_FOUND
                 is PixJaExistenteException -> Status.ALREADY_EXISTS
                 is IllegalStateException -> Status.FAILED_PRECONDITION
+                is ConstraintViolationException -> Status.INVALID_ARGUMENT
                 else -> Status.UNKNOWN
             }
 

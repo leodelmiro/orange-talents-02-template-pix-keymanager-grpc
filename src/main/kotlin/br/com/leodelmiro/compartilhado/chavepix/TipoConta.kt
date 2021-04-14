@@ -1,15 +1,15 @@
 package br.com.leodelmiro.compartilhado.chavepix
 
-import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.TipoConta as TipoContaProto
 
 enum class TipoConta {
     CONTA_CORRENTE, CONTA_POUPANCA, INVALIDA;
 
     companion object {
-        fun by(message: RegistroChaveRequest.TipoConta?): TipoConta {
+        fun by(message: TipoContaProto?): TipoConta {
             return when (message) {
-                RegistroChaveRequest.TipoConta.CONTA_CORRENTE -> CONTA_CORRENTE
-                RegistroChaveRequest.TipoConta.CONTA_POUPANCA -> CONTA_POUPANCA
+                TipoContaProto.CONTA_CORRENTE -> CONTA_CORRENTE
+                TipoContaProto.CONTA_POUPANCA -> CONTA_POUPANCA
                 else -> INVALIDA
             }
         }

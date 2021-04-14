@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import org.mockito.Mockito
+import br.com.leodelmiro.TipoChave as TipoChaveProto
+import br.com.leodelmiro.TipoConta as TipoContaProto
 
 
 internal class ValidacoesRegistroKtTest {
@@ -41,7 +42,7 @@ internal class ValidacoesRegistroKtTest {
 
     @Test
     fun `validaTipoConta deve retornar um ErrorMessage quando nao for um Tipo Conta valido`() {
-        val result = validaTipoConta(RegistroChaveRequest.TipoConta.CONTA_DESCONHECIDA)
+        val result = validaTipoConta(TipoContaProto.CONTA_DESCONHECIDA)
 
         assertEquals("Tipo de conta deve ser válida", result?.description)
         assertTrue(result is ErrorMessage)
@@ -61,7 +62,7 @@ internal class ValidacoesRegistroKtTest {
             "CONTA_CORRENTE"
     )
     fun `validaTipoConta deve retornar null quando tipo conta valido`(tipoContaString: String) {
-        val tipoConta = RegistroChaveRequest.TipoConta.valueOf(tipoContaString)
+        val tipoConta = TipoContaProto.valueOf(tipoContaString)
         val result = validaTipoConta(tipoConta)
 
         assertEquals(null, result?.description)
@@ -69,7 +70,7 @@ internal class ValidacoesRegistroKtTest {
 
     @Test
     fun `validaTipoChave deve retornar um ErrorMessage quando nao for um Tipo Chave valido`() {
-        val result = validaTipoChave(RegistroChaveRequest.TipoChave.CHAVE_DESCONHECIDA)
+        val result = validaTipoChave(TipoChaveProto.CHAVE_DESCONHECIDA)
 
         assertEquals("Tipo de chave deve ser válida", result?.description)
         assertTrue(result is ErrorMessage)
@@ -91,7 +92,7 @@ internal class ValidacoesRegistroKtTest {
             "CELULAR"
     )
     fun `validaTipoChave deve retornar null quando tipo chave valido`(tipoChaveString: String) {
-        val tipoChave = RegistroChaveRequest.TipoChave.valueOf(tipoChaveString)
+        val tipoChave = TipoChaveProto.valueOf(tipoChaveString)
         val result = validaTipoChave(tipoChave)
 
         assertEquals(null, result?.description)
@@ -101,9 +102,9 @@ internal class ValidacoesRegistroKtTest {
     fun `validaRequest deve retornar null quando request for valido`() {
         val registroRequest = RegistroChaveRequest.newBuilder()
                 .setIdCliente("8d91cebf-c17b-4ba3-ac3e-d26dcfa7d041")
-                .setTipoChave(RegistroChaveRequest.TipoChave.EMAIL)
+                .setTipoChave(TipoChaveProto.EMAIL)
                 .setChave("teste@teste.com")
-                .setTipoConta(RegistroChaveRequest.TipoConta.CONTA_POUPANCA)
+                .setTipoConta(TipoContaProto.CONTA_POUPANCA)
                 .build()
 
         val result = registroRequest.valida()
@@ -127,9 +128,9 @@ internal class ValidacoesRegistroKtTest {
     ) {
         val registroRequest = RegistroChaveRequest.newBuilder()
                 .setIdCliente(idCliente)
-                .setTipoChave(RegistroChaveRequest.TipoChave.valueOf(tipoChave))
+                .setTipoChave(TipoChaveProto.valueOf(tipoChave))
                 .setChave(chave)
-                .setTipoConta(RegistroChaveRequest.TipoConta.valueOf(tipoConta))
+                .setTipoConta(TipoContaProto.valueOf(tipoConta))
                 .build()
 
         val result = registroRequest.valida()

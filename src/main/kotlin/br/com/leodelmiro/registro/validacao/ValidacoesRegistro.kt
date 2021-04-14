@@ -1,6 +1,8 @@
 package br.com.leodelmiro.registro.validacao
 
 import br.com.leodelmiro.RegistroChaveRequest
+import br.com.leodelmiro.TipoConta as TipoContaProto
+import br.com.leodelmiro.TipoChave as TipoChaveProto
 import br.com.leodelmiro.compartilhado.chavepix.TipoChave
 import br.com.leodelmiro.compartilhado.chavepix.TipoConta
 import br.com.leodelmiro.compartilhado.validacao.ErrorMessage
@@ -40,7 +42,7 @@ fun validaIdCliente(clientId: String?): ErrorMessage? {
     return null
 }
 
-fun validaTipoConta(requestTipoConta: RegistroChaveRequest.TipoConta?): ErrorMessage? {
+fun validaTipoConta(requestTipoConta: TipoContaProto?): ErrorMessage? {
     if (requestTipoConta == null) {
         return ErrorMessage(description = "Tipo de conta é obrigatório")
     }
@@ -52,7 +54,7 @@ fun validaTipoConta(requestTipoConta: RegistroChaveRequest.TipoConta?): ErrorMes
     return null
 }
 
-fun validaTipoChave(requestTipoChave: RegistroChaveRequest.TipoChave?): ErrorMessage? {
+fun validaTipoChave(requestTipoChave: TipoChaveProto?): ErrorMessage? {
     if (requestTipoChave == null) {
         return ErrorMessage(description = "Tipo de chave é obrigatório")
     }

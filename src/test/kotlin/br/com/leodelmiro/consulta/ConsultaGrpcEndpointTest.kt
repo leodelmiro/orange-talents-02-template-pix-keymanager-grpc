@@ -52,10 +52,10 @@ internal class ConsultaGrpcEndpointTest(private val repository: ChavePixReposito
 
         with(result) {
             assertEquals(chavePix.id.toString(), result.idPix)
-            assertEquals(chavePix.tipoChave.toString(), chave.tipoChave.toString())
+            assertEquals(chavePix.tipoChave.name, chave.tipoChave.name)
             assertEquals(chavePix.chave, chave.chavePix)
             assertEquals(chavePix.idCliente.toString(), idClient)
-            assertEquals(chavePix.tipoConta.toString(), chave.conta.tipoConta.toString())
+            assertEquals(chavePix.tipoConta.name, chave.conta.tipoConta.name)
             assertEquals(chavePix.conta.nomeTitular, chave.conta.nomeTitular)
             assertEquals(chavePix.conta.cpfTitular, chave.conta.cpfTitular)
             assertEquals(chavePix.conta.agencia, chave.conta.agencia)
@@ -76,10 +76,10 @@ internal class ConsultaGrpcEndpointTest(private val repository: ChavePixReposito
 
         with(result) {
             assertEquals(chavePix.id.toString(), result.idPix)
-            assertEquals(chavePix.tipoChave.toString(), chave.tipoChave.toString())
+            assertEquals(chavePix.tipoChave.name, chave.tipoChave.name)
             assertEquals(chavePix.chave, chave.chavePix)
             assertEquals(chavePix.idCliente.toString(), idClient)
-            assertEquals(chavePix.tipoConta.toString(), chave.conta.tipoConta.toString())
+            assertEquals(chavePix.tipoConta.name, chave.conta.tipoConta.name)
             assertEquals(chavePix.conta.nomeTitular, chave.conta.nomeTitular)
             assertEquals(chavePix.conta.cpfTitular, chave.conta.cpfTitular)
             assertEquals(chavePix.conta.agencia, chave.conta.agencia)
@@ -101,9 +101,9 @@ internal class ConsultaGrpcEndpointTest(private val repository: ChavePixReposito
                 .build())
 
         with(result) {
-            assertEquals(chavePix.tipoChave.toString(), chave.tipoChave.toString())
+            assertEquals(chavePix.tipoChave.name, chave.tipoChave.name)
             assertEquals(chavePix.chave, chave.chavePix)
-            assertEquals(chavePix.tipoConta.toString(), chave.conta.tipoConta.toString())
+            assertEquals(chavePix.tipoConta.name, chave.conta.tipoConta.name)
             assertEquals(chavePix.conta.nomeTitular, chave.conta.nomeTitular)
             assertEquals(chavePix.conta.cpfTitular, chave.conta.cpfTitular)
             assertEquals(chavePix.conta.agencia, chave.conta.agencia)

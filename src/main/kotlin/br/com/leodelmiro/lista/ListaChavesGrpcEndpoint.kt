@@ -1,8 +1,7 @@
-package br.com.leodelmiro.consulta
+package br.com.leodelmiro.lista
 
 import br.com.leodelmiro.*
 import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
-import br.com.leodelmiro.registro.exceptions.ClienteNaoEncontradoException
 import com.google.protobuf.Timestamp
 import io.grpc.stub.StreamObserver
 import java.time.ZoneId
@@ -12,7 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ListaChavesGrpcEndpoint(@Inject private val repository: ChavePixRepository) :
-        KeyManagerConsultaGrpcServiceGrpc.KeyManagerConsultaGrpcServiceImplBase() {
+        KeyManagerListaGrpcServiceGrpc.KeyManagerListaGrpcServiceImplBase() {
 
     override fun listaChaves(request: ListaChavesRequest, responseObserver: StreamObserver<ListaChavesResponse>) {
 
@@ -20,9 +19,6 @@ class ListaChavesGrpcEndpoint(@Inject private val repository: ChavePixRepository
             throw IllegalArgumentException("Id cliente não pode ser nulo ou vazio!")
 
         val idCliente = UUID.fromString(request.idCliente)
-
-        if (!repository.existsByIdCliente(idCliente))
-            throw ClienteNaoEncontradoException("Cliente não encontrado!")
 
         val listaChavesPix = repository.findAllByIdCliente(idCliente).map {
             ListaChavesResponse.ChaveResponse.newBuilder()

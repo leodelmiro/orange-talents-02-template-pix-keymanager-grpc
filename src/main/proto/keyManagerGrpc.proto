@@ -19,6 +19,9 @@ service KeyManagerRemoveGrpcService {
 
 service KeyManagerConsultaGrpcService {
   rpc consultaChave(ConsultaChaveRequest) returns (ConsultaChaveResponse) {}
+}
+
+service KeyManagerListaGrpcService {
   rpc listaChaves(ListaChavesRequest) returns (ListaChavesResponse) {}
 }
 

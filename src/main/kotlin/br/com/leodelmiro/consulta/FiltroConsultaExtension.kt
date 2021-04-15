@@ -6,7 +6,7 @@ import javax.validation.ConstraintViolationException
 import javax.validation.Validator
 
 fun ConsultaChaveRequest.filtro(validator: Validator): ConsultaChaveFiltro {
-    val filtro = when (filtroCase) {
+    val filtro = when (filtroCase!!) {
         PIXECLIENTEID -> {
             pixEClienteId.idPix.let {
                 ConsultaChaveFiltro.PorPixEClientId(

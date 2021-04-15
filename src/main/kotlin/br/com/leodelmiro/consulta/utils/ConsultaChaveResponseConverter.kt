@@ -1,4 +1,4 @@
-package br.com.leodelmiro.compartilhado.utils
+package br.com.leodelmiro.consulta.utils
 
 import br.com.leodelmiro.ConsultaChaveResponse
 import br.com.leodelmiro.TipoChave

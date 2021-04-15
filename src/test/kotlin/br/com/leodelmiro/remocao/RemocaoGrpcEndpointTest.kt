@@ -2,9 +2,8 @@ package br.com.leodelmiro.remocao
 
 import br.com.leodelmiro.KeyManagerRemoveGrpcServiceGrpc
 import br.com.leodelmiro.RemocaoChaveRequest
-import br.com.leodelmiro.compartilhado.apis.BcbClient
+import br.com.leodelmiro.compartilhado.apis.*
 import br.com.leodelmiro.compartilhado.apis.DeletePixKeyRequest.Companion.toRequest
-import br.com.leodelmiro.compartilhado.apis.DeletePixKeyResponse
 import br.com.leodelmiro.compartilhado.chavepix.*
 import br.com.leodelmiro.registro.RegistroGrpcEndpointTest
 import io.grpc.ManagedChannel
@@ -22,6 +21,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito
+import java.time.LocalDateTime
 import java.util.*
 import javax.inject.Inject
 
@@ -138,6 +138,24 @@ internal class RemocaoGrpcEndpointTest(private val repository: ChavePixRepositor
                 .setIdPix(idPix)
                 .setIdCliente(idCliente)
                 .build()
+    }
+
+    private fun pixDetailsResponse(): PixKeyDetailsResponse {
+        return PixKeyDetailsResponse(KeyType.CPF,
+                "96498610093",
+                BankAccount(
+                        "60701190",
+                        "0001",
+                        "291900",
+                        BankAccount.AccountType.CACC
+                ),
+                Owner(
+                        Owner.Type.NATURAL_PERSON,
+                        "Leonardo Delmiro",
+                        "96498610093"
+                ),
+                LocalDateTime.MIN
+        )
     }
 
     @MockBean(BcbClient::class)

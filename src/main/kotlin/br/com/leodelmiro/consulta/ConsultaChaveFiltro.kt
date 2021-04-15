@@ -18,8 +18,8 @@ sealed class ConsultaChaveFiltro {
     abstract fun consulta(repository: ChavePixRepository, bcbClient: BcbClient): DetalhesChavePix
 
     @Introspected
-    data class PorPixEClientId(@field: NotBlank @field:ValidUUID val idCliente: String,
-                               @field: NotBlank @field:ValidUUID val idPix: String) : ConsultaChaveFiltro() {
+    data class PorPixEClientId(@field:NotBlank @ValidUUID val idCliente: String,
+                               @field:NotBlank @ValidUUID val idPix: String) : ConsultaChaveFiltro() {
 
         override fun consulta(repository: ChavePixRepository, bcbClient: BcbClient): DetalhesChavePix {
             val idPixUUID = UUID.fromString(idPix)
@@ -33,7 +33,7 @@ sealed class ConsultaChaveFiltro {
     }
 
     @Introspected
-    data class PorChave(@field: NotBlank @field:Size(max = 77) val chave: String) : ConsultaChaveFiltro() {
+    data class PorChave(@field:NotBlank @field:Size(max = 77) val chave: String) : ConsultaChaveFiltro() {
 
         private val logger = LoggerFactory.getLogger(this::class.java)
 

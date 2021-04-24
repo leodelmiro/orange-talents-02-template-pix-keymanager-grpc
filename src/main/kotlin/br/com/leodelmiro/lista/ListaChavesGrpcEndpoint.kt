@@ -2,6 +2,7 @@ package br.com.leodelmiro.lista
 
 import br.com.leodelmiro.*
 import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
+import br.com.leodelmiro.compartilhado.exceptions.ErrorHandler
 import com.google.protobuf.Timestamp
 import io.grpc.stub.StreamObserver
 import java.time.ZoneId
@@ -9,6 +10,7 @@ import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@ErrorHandler
 @Singleton
 class ListaChavesGrpcEndpoint(@Inject private val repository: ChavePixRepository) :
         KeyManagerListaGrpcServiceGrpc.KeyManagerListaGrpcServiceImplBase() {

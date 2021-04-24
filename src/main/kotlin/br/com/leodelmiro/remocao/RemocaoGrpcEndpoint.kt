@@ -3,6 +3,7 @@ package br.com.leodelmiro.remocao
 import br.com.leodelmiro.KeyManagerRemoveGrpcServiceGrpc
 import br.com.leodelmiro.RemocaoChaveRequest
 import br.com.leodelmiro.RemocaoChaveResponse
+import br.com.leodelmiro.compartilhado.exceptions.ErrorHandler
 import br.com.leodelmiro.compartilhado.validacao.errorResponse
 import br.com.leodelmiro.remocao.validacao.valida
 import io.grpc.Status
@@ -10,13 +11,16 @@ import io.grpc.stub.StreamObserver
 import java.util.*
 import javax.inject.Singleton
 
+@ErrorHandler
 @Singleton
-class RemocaoGrpcEndpoint(private val removeChaveService: RemoveChaveService)
-    : KeyManagerRemoveGrpcServiceGrpc.KeyManagerRemoveGrpcServiceImplBase() {
+class RemocaoGrpcEndpoint(private val removeChaveService: RemoveChaveService) :
+    KeyManagerRemoveGrpcServiceGrpc.KeyManagerRemoveGrpcServiceImplBase() {
 
 
-    override fun removerChave(request: RemocaoChaveRequest?,
-                              responseObserver: StreamObserver<RemocaoChaveResponse>?) {
+    override fun removerChave(
+        request: RemocaoChaveRequest?,
+        responseObserver: StreamObserver<RemocaoChaveResponse>?
+    ) {
 
         val possivelErroValidacao = request?.valida()
         possivelErroValidacao?.let {
@@ -30,10 +34,11 @@ class RemocaoGrpcEndpoint(private val removeChaveService: RemoveChaveService)
         removeChaveService.remove(idChavePix, idCliente)
 
         responseObserver!!.onNext(
-                RemocaoChaveResponse.newBuilder()
-                        .setIdPix(idChavePix.toString())
-                        .setIdCliente(idCliente.toString())
-                        .build())
+            RemocaoChaveResponse.newBuilder()
+                .setIdPix(idChavePix.toString())
+                .setIdCliente(idCliente.toString())
+                .build()
+        )
         responseObserver.onCompleted()
     }
 

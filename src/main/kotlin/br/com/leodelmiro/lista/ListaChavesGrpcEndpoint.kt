@@ -2,7 +2,7 @@ package br.com.leodelmiro.lista
 
 import br.com.leodelmiro.*
 import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
-import br.com.leodelmiro.compartilhado.exceptions.ErrorHandler
+import br.com.leodelmiro.compartilhado.exceptions.interceptor.ErrorHandler
 import com.google.protobuf.Timestamp
 import io.grpc.stub.StreamObserver
 import java.time.ZoneId

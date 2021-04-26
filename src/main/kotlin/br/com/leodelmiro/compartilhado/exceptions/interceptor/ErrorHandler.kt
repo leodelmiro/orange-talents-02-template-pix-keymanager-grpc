@@ -1,7 +1,6 @@
-package br.com.leodelmiro.compartilhado.exceptions
+package br.com.leodelmiro.compartilhado.exceptions.interceptor
 
 import io.micronaut.aop.Around
-import io.micronaut.context.annotation.Type
 import kotlin.annotation.AnnotationTarget.*
 
 @MustBeDocumented

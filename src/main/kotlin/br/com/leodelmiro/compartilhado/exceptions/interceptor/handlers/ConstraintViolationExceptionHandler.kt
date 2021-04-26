@@ -1,6 +1,6 @@
-package br.com.leodelmiro.compartilhado.exceptions.handlers
+package br.com.leodelmiro.compartilhado.exceptions.interceptor.handlers
 
-import br.com.leodelmiro.compartilhado.exceptions.ExceptionHandler
+import br.com.leodelmiro.compartilhado.exceptions.interceptor.ExceptionHandler
 import com.google.rpc.BadRequest
 import com.google.rpc.Code
 import javax.inject.Singleton

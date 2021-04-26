@@ -3,7 +3,7 @@ package br.com.leodelmiro.remocao
 import br.com.leodelmiro.compartilhado.apis.BcbClient
 import br.com.leodelmiro.compartilhado.apis.DeletePixKeyRequest.Companion.toRequest
 import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
-import br.com.leodelmiro.remocao.exceptions.ChaveInexistenteException
+import br.com.leodelmiro.compartilhado.exceptions.ChaveInexistenteException
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory

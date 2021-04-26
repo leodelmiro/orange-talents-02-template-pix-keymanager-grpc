@@ -3,7 +3,7 @@ package br.com.leodelmiro.registro
 import br.com.leodelmiro.KeyManagerRegistraGrpcServiceGrpc
 import br.com.leodelmiro.RegistroChaveRequest
 import br.com.leodelmiro.RegistroChaveResponse
-import br.com.leodelmiro.compartilhado.exceptions.ErrorHandler
+import br.com.leodelmiro.compartilhado.exceptions.interceptor.ErrorHandler
 import br.com.leodelmiro.compartilhado.validacao.errorResponse
 import br.com.leodelmiro.registro.validacao.valida
 import io.grpc.Status

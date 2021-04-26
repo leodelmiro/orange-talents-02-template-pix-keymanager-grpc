@@ -4,7 +4,7 @@ import br.com.leodelmiro.compartilhado.apis.BcbClient
 import br.com.leodelmiro.compartilhado.apis.PixKeyDetailsResponse.Companion.paraDetalhesChavePix
 import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
 import br.com.leodelmiro.compartilhado.validacao.ValidUUID
-import br.com.leodelmiro.remocao.exceptions.ChaveInexistenteException
+import br.com.leodelmiro.compartilhado.exceptions.ChaveInexistenteException
 import io.micronaut.core.annotation.Introspected
 import io.micronaut.http.HttpStatus
 import org.slf4j.LoggerFactory

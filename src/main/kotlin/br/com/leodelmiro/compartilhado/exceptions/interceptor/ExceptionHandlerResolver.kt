@@ -1,6 +1,6 @@
-package br.com.leodelmiro.compartilhado.exceptions
+package br.com.leodelmiro.compartilhado.exceptions.interceptor
 
-import br.com.leodelmiro.compartilhado.exceptions.handlers.DefaultExceptionHandler
+import br.com.leodelmiro.compartilhado.exceptions.interceptor.handlers.DefaultExceptionHandler
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -3,7 +3,7 @@ package br.com.leodelmiro.remocao
 import br.com.leodelmiro.KeyManagerRemoveGrpcServiceGrpc
 import br.com.leodelmiro.RemocaoChaveRequest
 import br.com.leodelmiro.RemocaoChaveResponse
-import br.com.leodelmiro.compartilhado.exceptions.ErrorHandler
+import br.com.leodelmiro.compartilhado.exceptions.interceptor.ErrorHandler
 import br.com.leodelmiro.compartilhado.validacao.errorResponse
 import br.com.leodelmiro.remocao.validacao.valida
 import io.grpc.Status

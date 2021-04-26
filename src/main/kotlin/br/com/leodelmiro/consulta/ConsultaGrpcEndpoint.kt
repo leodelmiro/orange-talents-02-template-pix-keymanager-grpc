@@ -5,7 +5,7 @@ import br.com.leodelmiro.ConsultaChaveResponse
 import br.com.leodelmiro.KeyManagerConsultaGrpcServiceGrpc
 import br.com.leodelmiro.compartilhado.apis.BcbClient
 import br.com.leodelmiro.compartilhado.chavepix.ChavePixRepository
-import br.com.leodelmiro.compartilhado.exceptions.ErrorHandler
+import br.com.leodelmiro.compartilhado.exceptions.interceptor.ErrorHandler
 import br.com.leodelmiro.consulta.utils.ConsultaChaveResponseConverter
 import io.grpc.stub.StreamObserver
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package br.com.leodelmiro.compartilhado.exceptions
+package br.com.leodelmiro.compartilhado.exceptions.interceptor
 
 import io.grpc.BindableService
 import io.grpc.stub.StreamObserver
@@ -18,7 +18,7 @@ class ExceptionHandlerInterceptor(@Inject private val resolver: ExceptionHandler
         try {
             return context.proceed()
         } catch (e: Exception) {
-            LOGGER.error("Exceção ${e.javaClass.name} enquanto chamava ${context.targetMethod}", e)
+            LOGGER.error("Exceção ${e.javaClass.name} enquanto chamava ${context.targetMethod.name}")
 
             @Suppress("UNCHECKED_CAST")
             val handler = resolver.resolve(e) as ExceptionHandler<Exception>
